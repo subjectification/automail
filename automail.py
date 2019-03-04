@@ -58,14 +58,14 @@ except smtplib.SMTPException:
     clear()
     print("No suitable authentication method was found.")
     exit()
-except e:
+except Exception as e:
     clear()
     print(str(e))
     exit()
 
 for CLASS in os.listdir(path):
-    if CLASS != __file__:
-        class_path = os.path.join(path, CLASS)
+    class_path = os.path.join(path,CLASS)
+    if CLASS != __file__ and CLASS != ".git" and os.path.isdir(class_path):
         for student in os.listdir(class_path):
             student_path = os.path.join(class_path, student)
             msg = MIMEMultipart()
@@ -75,7 +75,7 @@ for CLASS in os.listdir(path):
             msg['Subject'] = "["+CLASS+"] assignment feedback"
             BODY = "Hi,\n\nAttached is your feedback for the latest %s assignment.\n\nPlease let me know if you have any questions or concerns.\n\nKind regards,\n%s" % (CLASS, NAME)
             msg.attach(MIMEText(BODY, 'plain'))
-            ctype, encoding = mimetypes.guess_type(student)
+            ctype, encoding = mimetypes.guess_type(student_path)
             maintype, subtype = ctype.split('/', 1)
             fp = open(student_path,'rb')
             attachment = MIMEBase(maintype, subtype)

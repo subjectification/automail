@@ -35,6 +35,8 @@ if '@' not in FROM:
 PASSWORD = getpass.getpass()
 NAME = input("Your name: ")
 
+print("Authenticating... Please wait.")
+
 # connect to server
 server = smtplib.SMTP("smtp-mail.outlook.com",587)  ## TODO: edit if not using an outlook account
 server.starttls()
@@ -62,6 +64,8 @@ except Exception as e:
     clear()
     print(str(e))
     exit()
+
+print("Successfully logged in. Sending emails...")
 
 for CLASS in os.listdir(path):
     class_path = os.path.join(path,CLASS)

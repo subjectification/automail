@@ -1,10 +1,3 @@
-#   INSTRUCTIONS: Place this file in a directory, with other directories that have the names of the classes
-#   you are tutoring, within each directory there should be files with uXXXXXXX.ext, where ext is the file extension.
-
-#   Example: automail.py is in a directory, the only other thing in the directory is another directory called
-#   COMP1100, within the COMP1100 directory are the feedback files for each student, and each file is named
-#   something like u5130810.pdf
-
 #   Tested on python 3.7.2
 #   Written by David O'Donohue, constructive feedback is welcome.
 
